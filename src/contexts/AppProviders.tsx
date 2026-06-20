@@ -1,7 +1,15 @@
+import type { ReactNode } from "react";
+import { AuthProvider } from "./AuthContext";
+import { CartProvider } from "./CartContext";
+
 interface AppProvidersProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export function AppProviders({ children }: AppProvidersProps) {
-  return <>{children}</>;
+  return (
+    <AuthProvider>
+      <CartProvider>{children}</CartProvider>
+    </AuthProvider>
+  );
 }
