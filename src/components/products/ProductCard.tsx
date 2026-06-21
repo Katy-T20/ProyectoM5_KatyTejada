@@ -9,9 +9,9 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       to={`/product/${product.id}`}
-      className="flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white transition hover:shadow-md"
+      className="flex flex-col overflow-hidden rounded-xl border border-dark-border bg-dark-surface transition hover:border-brand-purple"
     >
-      <div className="aspect-square bg-gray-100">
+      <div className="aspect-square bg-dark-border">
         <img
           src={product.imageUrl}
           alt={product.name}
@@ -20,13 +20,13 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       <div className="flex flex-col gap-1 p-3">
-        <span className="text-xs uppercase text-gray-400">
+        <span className="text-xs uppercase text-gray-500">
           {product.category}
         </span>
-        <h3 className="text-sm font-medium text-gray-900 line-clamp-2">
+        <h3 className="text-sm font-medium text-white line-clamp-2">
           {product.name}
         </h3>
-        <span className="text-sm font-semibold text-pink-500">
+        <span className="text-sm font-semibold text-brand-purple">
           ${product.price.toFixed(2)}
         </span>
       </div>

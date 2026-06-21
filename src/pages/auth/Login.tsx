@@ -62,9 +62,9 @@ export function Login() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-sm">
-        <h1 className="mb-6 text-center text-2xl font-semibold text-gray-900">
+    <div className="flex min-h-screen items-center justify-center bg-dark-bg px-4">
+      <div className="w-full max-w-sm rounded-2xl bg-dark-surface p-6 shadow-sm">
+        <h1 className="mb-6 text-center text-2xl font-semibold text-white">
           Iniciar sesión
         </h1>
 
@@ -95,9 +95,9 @@ export function Login() {
         </form>
 
         <div className="my-4 flex items-center gap-2">
-          <div className="h-px flex-1 bg-gray-200" />
-          <span className="text-xs text-gray-400">o</span>
-          <div className="h-px flex-1 bg-gray-200" />
+          <div className="h-px flex-1 bg-dark-border" />
+          <span className="text-xs text-gray-500">o</span>
+          <div className="h-px flex-1 bg-dark-border" />
         </div>
 
         <Button
@@ -108,9 +108,9 @@ export function Login() {
           Continuar con Google
         </Button>
 
-        <p className="mt-4 text-center text-sm text-gray-500">
+        <p className="mt-4 text-center text-sm text-gray-400">
           ¿No tenés cuenta?{" "}
-          <Link to="/register" className="font-medium text-pink-500">
+          <Link to="/register" className="font-medium text-brand-purple">
             Registrate
           </Link>
         </p>

@@ -8,12 +8,12 @@ interface ProductGridProps {
 
 function ProductSkeleton() {
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-gray-100 bg-white">
-      <div className="aspect-square animate-pulse bg-gray-200" />
+    <div className="flex flex-col overflow-hidden rounded-xl border border-dark-border bg-dark-surface">
+      <div className="aspect-square animate-pulse bg-dark-border" />
       <div className="flex flex-col gap-2 p-3">
-        <div className="h-3 w-1/3 animate-pulse rounded bg-gray-200" />
-        <div className="h-4 w-3/4 animate-pulse rounded bg-gray-200" />
-        <div className="h-4 w-1/4 animate-pulse rounded bg-gray-200" />
+        <div className="h-3 w-1/3 animate-pulse rounded bg-dark-border" />
+        <div className="h-4 w-3/4 animate-pulse rounded bg-dark-border" />
+        <div className="h-4 w-1/4 animate-pulse rounded bg-dark-border" />
       </div>
     </div>
   );
@@ -34,7 +34,7 @@ export function ProductGrid({ products, loading }: ProductGridProps) {
     return (
       <div className="flex flex-col items-center justify-center gap-2 py-16 text-center">
         <span className="text-3xl">🔍</span>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-400">
           No encontramos productos con esos filtros.
         </p>
       </div>

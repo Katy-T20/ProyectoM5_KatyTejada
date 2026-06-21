@@ -44,9 +44,9 @@ export function Register() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-sm">
-        <h1 className="mb-6 text-center text-2xl font-semibold text-gray-900">
+    <div className="flex min-h-screen items-center justify-center bg-dark-bg px-4">
+      <div className="w-full max-w-sm rounded-2xl bg-dark-surface p-6 shadow-sm">
+        <h1 className="mb-6 text-center text-2xl font-semibold text-white">
           Crear cuenta
         </h1>
 
@@ -85,9 +85,9 @@ export function Register() {
           </Button>
         </form>
 
-        <p className="mt-4 text-center text-sm text-gray-500">
+        <p className="mt-4 text-center text-sm text-gray-400">
           ¿Ya tenés cuenta?{" "}
-          <Link to="/login" className="font-medium text-pink-500">
+          <Link to="/login" className="font-medium text-brand-purple">
             Iniciá sesión
           </Link>
         </p>

@@ -15,15 +15,15 @@ export function Navbar() {
   }
 
   return (
-    <nav className="border-b border-gray-100 bg-white">
+    <nav className="border-b border-dark-border bg-dark-bg">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link to="/" className="text-lg font-semibold text-pink-500">
+        <Link to="/" className="text-lg font-semibold text-brand-purple">
           Ignite Beauty Shop
         </Link>
 
         {/* Botón hamburguesa - solo móvil */}
         <button
-          className="text-gray-700 sm:hidden"
+          className="text-white sm:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir menú"
         >
@@ -34,14 +34,14 @@ export function Navbar() {
         <div className="hidden items-center gap-6 sm:flex">
           <Link
             to="/catalog"
-            className="text-sm text-gray-700 hover:text-pink-500"
+            className="text-sm text-gray-300 hover:text-brand-teal"
           >
             Catálogo
           </Link>
 
           <Link
             to="/cart"
-            className="text-sm text-gray-700 hover:text-pink-500"
+            className="text-sm text-gray-300 hover:text-brand-teal"
           >
             Carrito ({itemCount})
           </Link>
@@ -51,7 +51,7 @@ export function Navbar() {
               {user.role === "admin" && (
                 <Link
                   to="/admin"
-                  className="text-sm text-gray-700 hover:text-pink-500"
+                  className="text-sm text-gray-300 hover:text-brand-teal"
                 >
                   Admin
                 </Link>
@@ -59,17 +59,17 @@ export function Navbar() {
               {user.role === "customer" && (
                 <Link
                   to="/orders"
-                  className="text-sm text-gray-700 hover:text-pink-500"
+                  className="text-sm text-gray-300 hover:text-brand-teal"
                 >
                   Mis órdenes
                 </Link>
               )}
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-400">
                 Hola {user.displayName}
               </span>
               <button
                 onClick={handleLogout}
-                className="text-sm font-medium text-pink-500"
+                className="text-sm font-medium text-brand-purple"
               >
                 Cerrar sesión
               </button>
@@ -78,13 +78,13 @@ export function Navbar() {
             <>
               <Link
                 to="/login"
-                className="text-sm text-gray-700 hover:text-pink-500"
+                className="text-sm text-gray-300 hover:text-brand-teal"
               >
                 Iniciar sesión
               </Link>
               <Link
                 to="/register"
-                className="text-sm font-medium text-pink-500"
+                className="text-sm font-medium text-brand-purple"
               >
                 Registrarme
               </Link>
@@ -95,11 +95,11 @@ export function Navbar() {
 
       {/* Menú móvil desplegable */}
       {menuOpen && (
-        <div className="flex flex-col gap-3 border-t border-gray-100 px-4 py-3 sm:hidden">
+        <div className="flex flex-col gap-3 border-t border-dark-border px-4 py-3 sm:hidden">
           <Link
             to="/catalog"
             onClick={() => setMenuOpen(false)}
-            className="text-sm text-gray-700"
+            className="text-sm text-gray-300"
           >
             Catálogo
           </Link>
@@ -107,7 +107,7 @@ export function Navbar() {
           <Link
             to="/cart"
             onClick={() => setMenuOpen(false)}
-            className="text-sm text-gray-700"
+            className="text-sm text-gray-300"
           >
             Carrito ({itemCount})
           </Link>
@@ -118,7 +118,7 @@ export function Navbar() {
                 <Link
                   to="/admin"
                   onClick={() => setMenuOpen(false)}
-                  className="text-sm text-gray-700"
+                  className="text-sm text-gray-300"
                 >
                   Admin
                 </Link>
@@ -127,17 +127,17 @@ export function Navbar() {
                 <Link
                   to="/orders"
                   onClick={() => setMenuOpen(false)}
-                  className="text-sm text-gray-700"
+                  className="text-sm text-gray-300"
                 >
                   Mis órdenes
                 </Link>
               )}
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-400">
                 Hola {user.displayName}
               </span>
               <button
                 onClick={handleLogout}
-                className="text-left text-sm font-medium text-pink-500"
+                className="text-left text-sm font-medium text-brand-purple"
               >
                 Cerrar sesión
               </button>
@@ -147,14 +147,14 @@ export function Navbar() {
               <Link
                 to="/login"
                 onClick={() => setMenuOpen(false)}
-                className="text-sm text-gray-700"
+                className="text-sm text-gray-300"
               >
                 Iniciar sesión
               </Link>
               <Link
                 to="/register"
                 onClick={() => setMenuOpen(false)}
-                className="text-sm font-medium text-pink-500"
+                className="text-sm font-medium text-brand-purple"
               >
                 Registrarme
               </Link>

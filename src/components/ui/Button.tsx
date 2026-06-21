@@ -18,8 +18,8 @@ export function Button({
 
   const variantStyles =
     variant === "primary"
-      ? "bg-pink-500 text-white hover:bg-pink-600"
-      : "bg-gray-100 text-gray-700 hover:bg-gray-200";
+      ? "bg-brand-purple text-white hover:bg-brand-purple-dark"
+      : "border border-brand-teal text-brand-teal hover:bg-brand-teal/10";
 
   return (
     <button
