@@ -1,13 +1,11 @@
 import { Routes, Route } from "react-router-dom";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { CustomerLayout } from "@/components/layout/CustomerLayout";
+import { Register } from "@/pages/auth/Register";
+import { Login } from "@/pages/auth/Login";
 
 function Home() {
   return <div>Home</div>;
-}
-function Login() {
-  return <div>Login</div>;
-}
-function Register() {
-  return <div>Register</div>;
 }
 function Catalog() {
   return <div>Catalog</div>;
@@ -40,17 +38,29 @@ function AdminOrders() {
 export function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/catalog" element={<Catalog />} />
-      <Route path="/product/:id" element={<ProductDetail />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/orders" element={<Orders />} />
-      <Route path="/admin" element={<Dashboard />} />
-      <Route path="/admin/products" element={<AdminProducts />} />
-      <Route path="/admin/orders" element={<AdminOrders />} />
+      {/* Rutas públicas envueltas en el layout con Navbar */}
+      <Route element={<CustomerLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
+
+        {/* Rutas protegidas de cliente */}
+        <Route element={<ProtectedRoute role="customer" />}>
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/orders" element={<Orders />} />
+        </Route>
+      </Route>
+
+      {/* Rutas protegidas de admin (sin el layout de cliente) */}
+      <Route element={<ProtectedRoute role="admin" />}>
+        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/admin/orders" element={<AdminOrders />} />
+      </Route>
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
