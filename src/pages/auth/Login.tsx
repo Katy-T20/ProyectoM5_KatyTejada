@@ -87,13 +87,20 @@ export function Login() {
             required
           />
 
-          {error && <p className="text-sm text-red-500">{error}</p>}
+          {error && <p className="text-sm text-red-400">{error}</p>}
 
           <Button type="submit" loading={loading}>
             Iniciar sesión
           </Button>
-        </form>
 
+          <div className="rounded-lg border border-brand-teal/30 bg-brand-teal/10 px-3 py-2">
+            <p className="text-xs text-brand-teal">
+              <span className="font-semibold">Nota:</span> si te registraste o
+              iniciaste sesión con Google, usá ese método para ingresar a tu
+              cuenta.
+            </p>
+          </div>
+        </form>
         <div className="my-4 flex items-center gap-2">
           <div className="h-px flex-1 bg-dark-border" />
           <span className="text-xs text-gray-500">o</span>

@@ -34,7 +34,7 @@ export function Input({ label, error, id, type, ...rest }: InputProps) {
               showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
             }
           >
-            {showPassword ? "🙈" : "👁️"}
+            {showPassword ? "👁️" : "🙈"}
           </button>
         )}
       </div>
