@@ -3,18 +3,12 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { CustomerLayout } from "@/components/layout/CustomerLayout";
 import { Register } from "@/pages/auth/Register";
 import { Login } from "@/pages/auth/Login";
+import { Catalog } from "@/pages/products/Catalog";
+import { ProductDetail } from "@/pages/products/ProductDetail";
+import { Cart } from "@/pages/cart/Cart";
 
 function Home() {
   return <div>Home</div>;
-}
-function Catalog() {
-  return <div>Catalog</div>;
-}
-function ProductDetail() {
-  return <div>Product Detail</div>;
-}
-function Cart() {
-  return <div>Cart</div>;
 }
 function Checkout() {
   return <div>Checkout</div>;

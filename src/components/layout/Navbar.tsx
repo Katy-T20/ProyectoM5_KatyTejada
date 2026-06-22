@@ -17,7 +17,7 @@ export function Navbar() {
   return (
     <nav className="border-b border-dark-border bg-dark-bg">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link to="/" className="text-lg font-semibold text-brand-purple">
+        <Link to="/" className="text-2xl font-bold text-brand-purple">
           Ignite Beauty Shop
         </Link>
 

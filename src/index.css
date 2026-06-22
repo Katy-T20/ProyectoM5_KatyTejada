@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 18px;
+  }
+
   body {
-    @apply bg-gray-50 text-gray-900 min-h-screen;
+    @apply bg-dark-bg text-white min-h-screen;
   }
 
   .container-app {
