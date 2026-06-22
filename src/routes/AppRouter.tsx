@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { CustomerLayout } from "@/components/layout/CustomerLayout";
+import { AdminLayout } from "@/components/layout/AdminLayout";
 import { Register } from "@/pages/auth/Register";
 import { Login } from "@/pages/auth/Login";
 import { Catalog } from "@/pages/products/Catalog";
@@ -8,15 +9,13 @@ import { ProductDetail } from "@/pages/products/ProductDetail";
 import { Cart } from "@/pages/cart/Cart";
 import { Checkout } from "@/pages/cart/Checkout";
 import { Orders } from "@/pages/orders/Orders";
+import { Dashboard } from "@/pages/admin/Dashboard";
 
 function Home() {
   return <div>Home</div>;
 }
 function NotFound() {
   return <div>404 - Not Found</div>;
-}
-function Dashboard() {
-  return <div>Admin Dashboard</div>;
 }
 function AdminProducts() {
   return <div>Admin Products</div>;
@@ -44,11 +43,13 @@ export function AppRouter() {
         </Route>
       </Route>
 
-      {/* Rutas protegidas de admin (sin el layout de cliente) */}
+      {/* Rutas protegidas de admin */}
       <Route element={<ProtectedRoute role="admin" />}>
-        <Route path="/admin" element={<Dashboard />} />
-        <Route path="/admin/products" element={<AdminProducts />} />
-        <Route path="/admin/orders" element={<AdminOrders />} />
+        <Route element={<AdminLayout />}>
+          <Route path="/admin" element={<Dashboard />} />
+          <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFound />} />
