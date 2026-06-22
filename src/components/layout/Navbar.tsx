@@ -5,12 +5,13 @@ import { useCart } from "@/hooks/useCart";
 
 export function Navbar() {
   const { user, logout } = useAuth();
-  const { itemCount } = useCart();
+  const { itemCount, clearCart } = useCart();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   async function handleLogout() {
     await logout();
+    clearCart();
     navigate("/");
   }
 

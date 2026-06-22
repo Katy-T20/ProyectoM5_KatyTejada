@@ -19,10 +19,11 @@ export async function createOrder(
   items: OrderItem[],
   shippingAddress: Order["shippingAddress"],
 ): Promise<string> {
-  const total = items.reduce(
+  const rawTotal = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
+  const total = Math.round(rawTotal * 100) / 100;
 
   const docRef = await addDoc(collection(db, ORDERS_COLLECTION), {
     userId,

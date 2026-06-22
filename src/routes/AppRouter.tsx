@@ -6,15 +6,11 @@ import { Login } from "@/pages/auth/Login";
 import { Catalog } from "@/pages/products/Catalog";
 import { ProductDetail } from "@/pages/products/ProductDetail";
 import { Cart } from "@/pages/cart/Cart";
+import { Checkout } from "@/pages/cart/Checkout";
+import { Orders } from "@/pages/orders/Orders";
 
 function Home() {
   return <div>Home</div>;
-}
-function Checkout() {
-  return <div>Checkout</div>;
-}
-function Orders() {
-  return <div>Orders</div>;
 }
 function NotFound() {
   return <div>404 - Not Found</div>;
