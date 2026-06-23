@@ -5,6 +5,7 @@ import {
   addProduct,
   updateProduct,
 } from "@/services/products.service";
+import { uploadProductImage } from "@/services/storage.service";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import type { ProductCategory } from "@/types/product.types";
@@ -29,7 +30,9 @@ export function ProductForm() {
   const [stock, setStock] = useState("");
   const [category, setCategory] = useState<ProductCategory>("skincare");
   const [imageUrl, setImageUrl] = useState("");
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [loadingProduct, setLoadingProduct] = useState(isEditing);
   const [error, setError] = useState("");
 
@@ -57,13 +60,21 @@ export function ProductForm() {
     setLoading(true);
 
     try {
+      let finalImageUrl = imageUrl;
+
+      if (imageFile) {
+        setUploadingImage(true);
+        finalImageUrl = await uploadProductImage(imageFile);
+        setUploadingImage(false);
+      }
+
       const productData = {
         name,
         description,
         price: Number(price),
         stock: Number(stock),
         category,
-        imageUrl,
+        imageUrl: finalImageUrl,
       };
 
       if (isEditing && id) {
@@ -78,6 +89,7 @@ export function ProductForm() {
       setError("Ocurrió un error al guardar el producto. Intentá de nuevo.");
     } finally {
       setLoading(false);
+      setUploadingImage(false);
     }
   }
 
@@ -160,13 +172,39 @@ export function ProductForm() {
           </select>
         </div>
 
-        <Input
-          id="imageUrl"
-          label="URL de imagen"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          required
-        />
+        <div className="flex flex-col gap-2">
+          <label htmlFor="image" className="text-sm font-medium text-gray-300">
+            Imagen del producto
+          </label>
+
+          {imageUrl && (
+            <img
+              src={imageUrl}
+              alt="Vista previa"
+              className="h-32 w-32 rounded-lg object-cover"
+            />
+          )}
+
+          <input
+            id="image"
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                setImageFile(file);
+                setImageUrl(URL.createObjectURL(file));
+              }
+            }}
+            className="text-sm text-gray-300"
+          />
+
+          {uploadingImage && (
+            <span className="text-xs text-admin-indigo">
+              Subiendo imagen...
+            </span>
+          )}
+        </div>
 
         {error && <p className="text-sm text-red-400">{error}</p>}
 
