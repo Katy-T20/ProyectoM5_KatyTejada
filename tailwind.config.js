@@ -14,6 +14,10 @@ export default {
           "purple-dark": "#7C3FC4",
           teal: "#5EE6D0",
         },
+        admin: {
+          indigo: "#4F5BD5",
+          "indigo-dark": "#3D47B0",
+        },
       },
     },
   },

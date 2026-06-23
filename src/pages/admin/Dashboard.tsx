@@ -65,7 +65,7 @@ export function Dashboard() {
             className="flex flex-col gap-1 rounded-xl bg-dark-surface p-4"
           >
             <span className="text-xs text-gray-300">{card.label}</span>
-            <span className="text-2xl font-bold text-brand-purple">
+            <span className="text-2xl font-bold text-admin-indigo">
               {card.value}
             </span>
           </div>

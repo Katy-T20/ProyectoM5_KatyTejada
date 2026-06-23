@@ -10,6 +10,7 @@ import { Cart } from "@/pages/cart/Cart";
 import { Checkout } from "@/pages/cart/Checkout";
 import { Orders } from "@/pages/orders/Orders";
 import { Dashboard } from "@/pages/admin/Dashboard";
+import { AdminProducts } from "@/pages/admin/AdminProducts";
 
 function Home() {
   return <div>Home</div>;
@@ -17,8 +18,8 @@ function Home() {
 function NotFound() {
   return <div>404 - Not Found</div>;
 }
-function AdminProducts() {
-  return <div>Admin Products</div>;
+function ProductForm() {
+  return <div>Product Form</div>;
 }
 function AdminOrders() {
   return <div>Admin Orders</div>;
@@ -48,6 +49,8 @@ export function AppRouter() {
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/products/new" element={<ProductForm />} />
+          <Route path="/admin/products/:id/edit" element={<ProductForm />} />
           <Route path="/admin/orders" element={<AdminOrders />} />
         </Route>
       </Route>

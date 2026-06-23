@@ -6,6 +6,7 @@ const ADMIN_LINKS = [
   { to: "/admin", label: "Dashboard" },
   { to: "/admin/products", label: "Productos" },
   { to: "/admin/orders", label: "Órdenes" },
+  { to: "/", label: "Volver a la tienda" },
 ];
 
 export function AdminLayout() {
@@ -23,7 +24,7 @@ export function AdminLayout() {
     <div className="flex min-h-screen flex-col bg-dark-bg sm:flex-row">
       {/* Header móvil */}
       <div className="flex items-center justify-between border-b border-dark-border bg-dark-surface px-4 py-3 sm:hidden">
-        <span className="text-lg font-bold text-brand-purple">Admin Panel</span>
+        <span className="text-lg font-bold text-admin-indigo">Admin Panel</span>
         <button
           className="text-white"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -39,7 +40,7 @@ export function AdminLayout() {
           menuOpen ? "flex" : "hidden"
         }`}
       >
-        <span className="mb-4 hidden text-lg font-bold text-brand-purple sm:block">
+        <span className="mb-4 hidden text-lg font-bold text-admin-indigo sm:block">
           Admin Panel
         </span>
 
@@ -50,7 +51,7 @@ export function AdminLayout() {
             onClick={() => setMenuOpen(false)}
             className={`rounded-lg px-3 py-2 text-sm transition ${
               location.pathname === link.to
-                ? "bg-brand-purple text-white"
+                ? "bg-admin-indigo text-white"
                 : "text-gray-300 hover:bg-dark-border"
             }`}
           >
