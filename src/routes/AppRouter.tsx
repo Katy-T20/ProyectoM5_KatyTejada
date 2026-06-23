@@ -11,15 +11,13 @@ import { Checkout } from "@/pages/cart/Checkout";
 import { Orders } from "@/pages/orders/Orders";
 import { Dashboard } from "@/pages/admin/Dashboard";
 import { AdminProducts } from "@/pages/admin/AdminProducts";
+import { ProductForm } from "@/pages/admin/ProductForm";
 
 function Home() {
   return <div>Home</div>;
 }
 function NotFound() {
   return <div>404 - Not Found</div>;
-}
-function ProductForm() {
-  return <div>Product Form</div>;
 }
 function AdminOrders() {
   return <div>Admin Orders</div>;
