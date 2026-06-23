@@ -39,8 +39,10 @@ export function Login() {
       await login(email, password);
       navigate("/catalog");
     } catch (err) {
-      const message = err instanceof Error ? err.message : "";
-      setError(getErrorMessage(message));
+      const code =
+        (err as { code?: string }).code ??
+        (err instanceof Error ? err.message : "");
+      setError(getErrorMessage(code));
     } finally {
       setLoading(false);
     }
@@ -54,8 +56,10 @@ export function Login() {
       await loginWithGoogle();
       navigate("/catalog");
     } catch (err) {
-      const message = err instanceof Error ? err.message : "";
-      setError(getErrorMessage(message));
+      const code =
+        (err as { code?: string }).code ??
+        (err instanceof Error ? err.message : "");
+      setError(getErrorMessage(code));
     } finally {
       setGoogleLoading(false);
     }
