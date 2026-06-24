@@ -17,10 +17,21 @@ export function Navbar() {
 
   return (
     <nav className="border-b border-dark-border bg-dark-bg">
+      {/* Primera fila: logo + saludo/menú hamburguesa */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link to="/" className="text-2xl font-bold text-brand-purple">
+        <Link
+          to="/"
+          className="text-lg font-bold text-brand-purple sm:text-2xl"
+        >
           Ignite Beauty Shop
         </Link>
+
+        {/* Saludo - solo escritorio */}
+        {user && (
+          <span className="hidden text-sm font-medium text-brand-teal sm:block">
+            Hola {user.displayName}
+          </span>
+        )}
 
         {/* Botón hamburguesa - solo móvil */}
         <button
@@ -30,77 +41,86 @@ export function Navbar() {
         >
           ☰
         </button>
+      </div>
 
-        {/* Links - escritorio */}
-        <div className="hidden items-center gap-6 sm:flex">
-          <Link to="/" className="text-sm text-gray-300 hover:text-brand-teal">
-            Inicio
-          </Link>
+      {/* Segunda fila - escritorio: navegación izquierda, carrito/sesión derecha */}
+      <div className="hidden border-t border-dark-border sm:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6">
+          <div className="flex items-center gap-6">
+            <Link
+              to="/"
+              className="text-sm text-gray-300 hover:text-brand-teal"
+            >
+              Inicio
+            </Link>
+            <Link
+              to="/catalog"
+              className="text-sm text-gray-300 hover:text-brand-teal"
+            >
+              Catálogo
+            </Link>
+            {user?.role === "admin" && (
+              <Link
+                to="/admin"
+                className="text-sm font-medium text-brand-teal hover:underline"
+              >
+                Admin
+              </Link>
+            )}
+            {user?.role === "customer" && (
+              <Link
+                to="/orders"
+                className="text-sm text-gray-300 hover:text-brand-teal"
+              >
+                Mis órdenes
+              </Link>
+            )}
+          </div>
 
-          <Link
-            to="/catalog"
-            className="text-sm text-gray-300 hover:text-brand-teal"
-          >
-            Catálogo
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link
+              to="/cart"
+              className="text-sm text-gray-300 hover:text-brand-teal"
+            >
+              🛒 ({itemCount})
+            </Link>
 
-          <Link
-            to="/cart"
-            className="text-sm text-gray-300 hover:text-brand-teal"
-          >
-            Carrito ({itemCount})
-          </Link>
-
-          {user ? (
-            <>
-              {user.role === "admin" && (
-                <Link
-                  to="/admin"
-                  className="text-sm text-gray-300 hover:text-brand-teal"
-                >
-                  Admin
-                </Link>
-              )}
-              {user.role === "customer" && (
-                <Link
-                  to="/orders"
-                  className="text-sm text-gray-300 hover:text-brand-teal"
-                >
-                  Mis órdenes
-                </Link>
-              )}
-              <span className="text-sm text-gray-400">
-                Hola {user.displayName}
-              </span>
+            {user ? (
               <button
                 onClick={handleLogout}
                 className="text-sm font-medium text-brand-purple"
               >
-                Cerrar sesión
+                🚪 Cerrar sesión
               </button>
-            </>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="text-sm text-gray-300 hover:text-brand-teal"
-              >
-                Iniciar sesión
-              </Link>
-              <Link
-                to="/register"
-                className="text-sm font-medium text-brand-purple"
-              >
-                Registrarme
-              </Link>
-            </>
-          )}
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="text-sm text-gray-300 hover:text-brand-teal"
+                >
+                  Iniciar sesión
+                </Link>
+                <Link
+                  to="/register"
+                  className="text-sm font-medium text-brand-purple"
+                >
+                  Registrarme
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Menú móvil desplegable */}
       {menuOpen && (
         <div className="flex flex-col gap-3 border-t border-dark-border px-4 py-3 sm:hidden">
+          {user && (
+            <span className="text-sm font-medium text-brand-teal">
+              Hola {user.displayName}
+            </span>
+          )}
+
           <Link
             to="/"
             onClick={() => setMenuOpen(false)}
@@ -108,7 +128,6 @@ export function Navbar() {
           >
             Inicio
           </Link>
-
           <Link
             to="/catalog"
             onClick={() => setMenuOpen(false)}
@@ -116,13 +135,12 @@ export function Navbar() {
           >
             Catálogo
           </Link>
-
           <Link
             to="/cart"
             onClick={() => setMenuOpen(false)}
             className="text-sm text-gray-300"
           >
-            Carrito ({itemCount})
+            🛒 Carrito ({itemCount})
           </Link>
 
           {user ? (
@@ -131,7 +149,7 @@ export function Navbar() {
                 <Link
                   to="/admin"
                   onClick={() => setMenuOpen(false)}
-                  className="text-sm text-gray-300"
+                  className="text-sm font-medium text-brand-teal"
                 >
                   Admin
                 </Link>
@@ -145,14 +163,11 @@ export function Navbar() {
                   Mis órdenes
                 </Link>
               )}
-              <span className="text-sm text-gray-400">
-                Hola {user.displayName}
-              </span>
               <button
                 onClick={handleLogout}
                 className="text-left text-sm font-medium text-brand-purple"
               >
-                Cerrar sesión
+                🚪 Cerrar sesión
               </button>
             </>
           ) : (

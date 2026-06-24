@@ -3,10 +3,10 @@ import { useAuth } from "@/hooks/useAuth";
 import type { UserRole } from "@/types/user.types";
 
 interface ProtectedRouteProps {
-  role?: UserRole;
+  allowedRoles?: UserRole[];
 }
 
-export function ProtectedRoute({ role }: ProtectedRouteProps) {
+export function ProtectedRoute({ allowedRoles }: ProtectedRouteProps) {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -17,7 +17,7 @@ export function ProtectedRoute({ role }: ProtectedRouteProps) {
     return <Navigate to="/login" replace />;
   }
 
-  if (role && user.role !== role) {
+  if (allowedRoles && !allowedRoles.includes(user.role)) {
     return <Navigate to="/" replace />;
   }
 

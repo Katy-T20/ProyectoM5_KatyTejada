@@ -31,15 +31,17 @@ export function AppRouter() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
 
-        {/* Rutas protegidas de cliente */}
-        <Route element={<ProtectedRoute role="customer" />}>
+        {/* Rutas protegidas — cliente y admin */}
+        <Route
+          element={<ProtectedRoute allowedRoles={["customer", "admin"]} />}
+        >
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/orders" element={<Orders />} />
         </Route>
       </Route>
 
       {/* Rutas protegidas de admin */}
-      <Route element={<ProtectedRoute role="admin" />}>
+      <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/admin/products" element={<AdminProducts />} />
