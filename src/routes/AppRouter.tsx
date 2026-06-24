@@ -13,10 +13,8 @@ import { Dashboard } from "@/pages/admin/Dashboard";
 import { AdminProducts } from "@/pages/admin/AdminProducts";
 import { ProductForm } from "@/pages/admin/ProductForm";
 import { AdminOrders } from "@/pages/admin/AdminOrders";
+import { Home } from "@/pages/Home";
 
-function Home() {
-  return <div>Home</div>;
-}
 function NotFound() {
   return <div>404 - Not Found</div>;
 }

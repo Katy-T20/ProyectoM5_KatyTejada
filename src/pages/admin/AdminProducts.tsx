@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProducts, deleteProduct } from "@/services/products.service";
+import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import type { Product } from "@/types/product.types";
 
 export function AdminProducts() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 
   useEffect(() => {
     fetchProducts();
@@ -18,14 +20,12 @@ export function AdminProducts() {
     setLoading(false);
   }
 
-  async function handleDelete(id: string, name: string) {
-    const confirmed = window.confirm(
-      `¿Eliminar "${name}"? Esta acción no se puede deshacer.`,
-    );
-    if (!confirmed) return;
+  async function handleConfirmDelete() {
+    if (!productToDelete) return;
 
-    await deleteProduct(id);
-    setProducts((prev) => prev.filter((p) => p.id !== id));
+    await deleteProduct(productToDelete.id);
+    setProducts((prev) => prev.filter((p) => p.id !== productToDelete.id));
+    setProductToDelete(null);
   }
 
   if (loading) {
@@ -86,7 +86,7 @@ export function AdminProducts() {
                       Editar
                     </Link>
                     <button
-                      onClick={() => handleDelete(product.id, product.name)}
+                      onClick={() => setProductToDelete(product)}
                       className="text-red-400 hover:underline"
                     >
                       Eliminar
@@ -98,6 +98,14 @@ export function AdminProducts() {
           </tbody>
         </table>
       </div>
+
+      <ConfirmDialog
+        open={productToDelete !== null}
+        title="Eliminar producto"
+        message={`¿Estás segura de que querés eliminar "${productToDelete?.name}"? Esta acción no se puede deshacer.`}
+        onConfirm={handleConfirmDelete}
+        onCancel={() => setProductToDelete(null)}
+      />
     </div>
   );
 }

@@ -33,6 +33,10 @@ export function Navbar() {
 
         {/* Links - escritorio */}
         <div className="hidden items-center gap-6 sm:flex">
+          <Link to="/" className="text-sm text-gray-300 hover:text-brand-teal">
+            Inicio
+          </Link>
+
           <Link
             to="/catalog"
             className="text-sm text-gray-300 hover:text-brand-teal"
@@ -97,6 +101,14 @@ export function Navbar() {
       {/* Menú móvil desplegable */}
       {menuOpen && (
         <div className="flex flex-col gap-3 border-t border-dark-border px-4 py-3 sm:hidden">
+          <Link
+            to="/"
+            onClick={() => setMenuOpen(false)}
+            className="text-sm text-gray-300"
+          >
+            Inicio
+          </Link>
+
           <Link
             to="/catalog"
             onClick={() => setMenuOpen(false)}

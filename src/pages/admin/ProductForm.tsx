@@ -208,9 +208,19 @@ export function ProductForm() {
 
         {error && <p className="text-sm text-red-400">{error}</p>}
 
-        <Button type="submit" loading={loading} className="w-fit">
-          {isEditing ? "Guardar cambios" : "Crear producto"}
-        </Button>
+        <div className="flex gap-3">
+          <Button type="submit" loading={loading} className="w-fit">
+            {isEditing ? "Guardar cambios" : "Crear producto"}
+          </Button>
+
+          <button
+            type="button"
+            onClick={() => navigate("/admin/products")}
+            className="rounded-lg border border-dark-border px-4 py-2 text-sm font-medium text-gray-300 hover:border-red-400 hover:text-red-400"
+          >
+            Cancelar
+          </button>
+        </div>
       </form>
     </div>
   );
