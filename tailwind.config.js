@@ -32,11 +32,32 @@ export default {
           "0%, 100%": { transform: "translate(0, 0)", opacity: "0.5" },
           "50%": { transform: "translate(10px, -24px)", opacity: "1" },
         },
+        fadeSlideUp: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        glowPulse: {
+          "0%, 100%": {
+            textShadow:
+              "0 0 25px rgba(155,93,229,0.8), 0 0 55px rgba(94,230,208,0.5), 0 0 80px rgba(155,93,229,0.3)",
+          },
+          "50%": {
+            textShadow:
+              "0 0 45px rgba(155,93,229,1), 0 0 85px rgba(94,230,208,0.7), 0 0 120px rgba(155,93,229,0.5)",
+          },
+        },
+        gradientShift: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       },
       animation: {
         float404: "float404 3.5s ease-in-out infinite",
         drip: "drip 2.2s ease-in infinite",
         floatParticle: "floatParticle 4s ease-in-out infinite",
+        fadeSlideUp: "fadeSlideUp 1s ease-out",
+        glowPulse: "glowPulse 2.5s ease-in-out infinite",
+        gradientShift: "gradientShift 4s ease-in-out infinite",
       },
     },
   },

@@ -21,7 +21,7 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
         <Link
           to="/"
-          className="text-lg font-bold text-brand-purple sm:text-2xl"
+          className="bg-gradient-to-r from-brand-purple via-brand-teal to-brand-purple bg-[length:200%_auto] bg-clip-text text-lg font-bold text-transparent animate-gradientShift sm:text-2xl"
         >
           Ignite Beauty Shop
         </Link>

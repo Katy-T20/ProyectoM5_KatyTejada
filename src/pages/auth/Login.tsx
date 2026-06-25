@@ -37,7 +37,7 @@ export function Login() {
 
     try {
       await login(email, password);
-      navigate("/catalog");
+      navigate("/");
     } catch (err) {
       const code =
         (err as { code?: string }).code ??

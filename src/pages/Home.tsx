@@ -24,29 +24,33 @@ export function Home() {
 
   return (
     <div>
-      <div className="container-app relative overflow-hidden rounded-2xl">
-        <img
-          src={heroImage}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-dark-bg/55" />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="relative overflow-hidden rounded-2xl">
+          <img
+            src={heroImage}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-dark-bg/55" />
 
-        <div className="relative px-4 py-20 text-center sm:py-28">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-            IGNITE BEAUTY
-          </h1>
-          <p className="mt-4 text-lg text-gray-200">
-            {user
-              ? `${user.displayName}, A un mundo que transforma tu esencia.`
-              : "Productos que encienden tu mejor versión"}
-          </p>
-          <Link
-            to="/catalog"
-            className="mt-6 inline-block rounded-lg bg-brand-purple px-8 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-brand-purple-dark"
-          >
-            Ver catálogo
-          </Link>
+          <div className="relative px-6 py-20 text-center sm:py-28">
+            <div className="animate-fadeSlideUp">
+              <h1 className="text-4xl font-bold tracking-tight text-white animate-glowPulse [animation-delay:1s] sm:text-6xl">
+                IGNITE BEAUTY
+              </h1>
+            </div>
+            <p className="mt-4 text-lg text-gray-200">
+              {user
+                ? `${user.displayName?.split(" ")[0]}! Descubre un mundo donde tu esencia se transforma y resplandece.`
+                : "Productos que destacan tu mejor versión"}
+            </p>
+            <Link
+              to="/catalog"
+              className="mt-6 inline-block rounded-lg border border-brand-teal px-8 py-3 text-sm font-semibold uppercase tracking-wide text-brand-teal transition hover:bg-brand-teal hover:text-dark-bg"
+            >
+              Ver catálogo
+            </Link>
+          </div>
         </div>
       </div>
 
