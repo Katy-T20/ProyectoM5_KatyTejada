@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getProducts } from "@/services/products.service";
 import { useAuth } from "@/hooks/useAuth";
 import { ProductGrid } from "@/components/products/ProductGrid";
+import heroImage from "@/assets/Home.jpg";
 import type { Product } from "@/types/product.types";
 
 export function Home() {
@@ -23,18 +24,13 @@ export function Home() {
 
   return (
     <div>
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 grid grid-cols-3 gap-1 opacity-40">
-          {products.slice(0, 3).map((product) => (
-            <img
-              key={product.id}
-              src={product.imageUrl}
-              alt=""
-              className="h-full w-full object-cover"
-            />
-          ))}
-        </div>
-        <div className="absolute inset-0 bg-dark-bg/80" />
+      <div className="container-app relative overflow-hidden rounded-2xl">
+        <img
+          src={heroImage}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-dark-bg/55" />
 
         <div className="relative px-4 py-20 text-center sm:py-28">
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
@@ -42,8 +38,8 @@ export function Home() {
           </h1>
           <p className="mt-4 text-lg text-gray-200">
             {user
-              ? `Hola ${user.displayName}, descubrí lo nuevo para vos`
-              : "Belleza que enciende tu mejor versión"}
+              ? `${user.displayName}, A un mundo que transforma tu esencia.`
+              : "Productos que encienden tu mejor versión"}
           </p>
           <Link
             to="/catalog"
@@ -56,7 +52,7 @@ export function Home() {
 
       <div className="container-app py-10">
         <h2 className="mb-6 text-2xl font-bold text-white">Destacados</h2>
-        <ProductGrid products={products.slice(0, 4)} loading={loading} />
+        <ProductGrid products={products.slice(0, 3)} loading={loading} />
       </div>
     </div>
   );

@@ -19,6 +19,25 @@ export default {
           "indigo-dark": "#3D47B0",
         },
       },
+      keyframes: {
+        float404: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-16px)" },
+        },
+        drip: {
+          "0%": { height: "0px", opacity: "0.8" },
+          "100%": { height: "44px", opacity: "0" },
+        },
+        floatParticle: {
+          "0%, 100%": { transform: "translate(0, 0)", opacity: "0.5" },
+          "50%": { transform: "translate(10px, -24px)", opacity: "1" },
+        },
+      },
+      animation: {
+        float404: "float404 3.5s ease-in-out infinite",
+        drip: "drip 2.2s ease-in infinite",
+        floatParticle: "floatParticle 4s ease-in-out infinite",
+      },
     },
   },
   plugins: [],

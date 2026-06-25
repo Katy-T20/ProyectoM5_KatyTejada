@@ -96,6 +96,13 @@ export function ProductDetail() {
           >
             {added ? "¡Agregado!" : "Agregar al carrito"}
           </Button>
+
+          <Link
+            to="/catalog"
+            className="mt-4 rounded-lg border border-dark-border px-4 py-2 text-center text-sm text-gray-300 transition hover:border-brand-teal hover:text-brand-teal"
+          >
+            ← Volver al catálogo
+          </Link>
         </div>
       </div>
     </div>
