@@ -4,6 +4,41 @@ import { useAuth } from "@/hooks/useAuth";
 import { CartItem } from "@/components/cart/CartItem";
 import { Button } from "@/components/ui/Button";
 
+const DOTS = [
+  { cx: 80, cy: 60, r: 4, delay1: "0s", delay2: "0s" },
+  { cx: 200, cy: 120, r: 3, delay1: "0.5s", delay2: "1s" },
+  { cx: 700, cy: 80, r: 5, delay1: "1s", delay2: "2s" },
+  { cx: 650, cy: 180, r: 3, delay1: "1.5s", delay2: "0.5s" },
+  { cx: 100, cy: 350, r: 4, delay1: "2s", delay2: "1.5s" },
+  { cx: 720, cy: 380, r: 3, delay1: "0.3s", delay2: "2.5s" },
+  { cx: 150, cy: 420, r: 5, delay1: "0.8s", delay2: "0.2s" },
+  { cx: 680, cy: 420, r: 3, delay1: "1.3s", delay2: "1.2s" },
+];
+
+function AnimatedDotsBackground() {
+  return (
+    <svg
+      className="absolute inset-0 h-full w-full"
+      viewBox="0 0 800 460"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      {DOTS.map((dot, i) => (
+        <circle
+          key={i}
+          cx={dot.cx}
+          cy={dot.cy}
+          r={dot.r}
+          className="animate-floatDot animate-colorShift fill-brand-purple"
+          style={{
+            animationDelay: `${dot.delay1}, ${dot.delay2}`,
+          }}
+        />
+      ))}
+    </svg>
+  );
+}
+
 export function Cart() {
   const { items, updateQuantity, removeItem, total } = useCart();
   const { user } = useAuth();
@@ -19,12 +54,29 @@ export function Cart() {
 
   if (items.length === 0) {
     return (
-      <div className="container-app flex flex-col items-center gap-3 py-16 text-center">
-        <span className="text-3xl">🛒</span>
-        <p className="text-gray-400">Tu carrito está vacío.</p>
-        <Link to="/catalog" className="font-medium text-brand-purple">
-          Ver catálogo
-        </Link>
+      <div className="container-app relative flex min-h-[70vh] flex-col items-center justify-center overflow-hidden px-4 text-center">
+        <AnimatedDotsBackground />
+
+        <div className="relative z-10 flex flex-col items-center">
+          <span className="inline-flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-brand-purple to-brand-teal text-4xl shadow-[0_0_50px_rgba(155,93,229,0.3)] animate-floatCart">
+            🛒
+          </span>
+
+          <h1 className="mt-7 text-xl font-medium text-white sm:text-2xl">
+            Tu carrito está vacío
+          </h1>
+          <p className="mt-2 max-w-sm text-sm text-gray-400">
+            Explorá el catálogo y descubrí los productos que van a encender tu
+            rutina de belleza.
+          </p>
+
+          <Link
+            to="/catalog"
+            className="mt-7 inline-block rounded-lg border border-brand-purple-dark px-8 py-3 text-sm font-semibold uppercase tracking-wide text-brand-purple-dark transition hover:bg-brand-purple-dark hover:text-white"
+          >
+            Ver catálogo
+          </Link>
+        </div>
       </div>
     );
   }

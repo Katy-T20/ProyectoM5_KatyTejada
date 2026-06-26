@@ -5,7 +5,7 @@ export default {
     extend: {
       colors: {
         dark: {
-          bg: "#0F0F12",
+          bg: "#16131F",
           surface: "#1C1C22",
           border: "#2A2A30",
         },
@@ -50,6 +50,18 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+        floatDot: {
+          "0%, 100%": { transform: "translate(0, 0)", opacity: "0.35" },
+          "50%": { transform: "translate(6px, -14px)", opacity: "0.9" },
+        },
+        colorShift: {
+          "0%, 50%, 100%": { fill: "#9B5DE5" },
+          "25%, 75%": { fill: "#5EE6D0" },
+        },
+        floatCart: {
+          "0%, 100%": { transform: "translateY(0px) rotate(-2deg)" },
+          "50%": { transform: "translateY(-14px) rotate(2deg)" },
+        },
       },
       animation: {
         float404: "float404 3.5s ease-in-out infinite",
@@ -58,6 +70,9 @@ export default {
         fadeSlideUp: "fadeSlideUp 1s ease-out",
         glowPulse: "glowPulse 2.5s ease-in-out infinite",
         gradientShift: "gradientShift 4s ease-in-out infinite",
+        floatDot: "floatDot 4s ease-in-out infinite",
+        colorShift: "colorShift 6s ease-in-out infinite",
+        floatCart: "floatCart 3.5s ease-in-out infinite",
       },
     },
   },
